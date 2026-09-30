@@ -43,15 +43,6 @@
     .twitch-fire-link:hover{color:#d9ffff;text-shadow:0 0 8px #5ee9ff,0 0 18px rgba(94,233,255,.75)}.twitch-fire-link:hover::before,.twitch-fire-link:hover::after{opacity:1}
     @keyframes lick{from{transform:translateY(2px) scaleX(.95)}to{transform:translateY(-6px) scaleX(1.05)}}
 
-    .flame-orb{position:absolute;width:180px;height:180px;border-radius:50%;left:71%;top:58%;transform:translate(-50%,-50%);pointer-events:none;mix-blend-mode:screen;z-index:4;transition:transform .12s ease-out,left .12s ease-out,top .12s ease-out}
-    .flame-orb::before,.flame-orb::after{content:"";position:absolute;inset:0;border-radius:50%;filter:blur(12px);background:radial-gradient(circle,#eaffff 0 4%,#77f5ff 12%,rgba(78,213,255,.52) 28%,rgba(101,98,255,.22) 52%,transparent 72%);animation:pulse 1.5s ease-in-out infinite alternate}
-    .flame-orb::after{inset:22px -28px -18px 20px;background:conic-gradient(from 80deg,transparent 0 10%,rgba(128,246,255,.62) 12% 22%,transparent 25% 42%,rgba(90,218,255,.5) 45% 56%,transparent 60% 100%);filter:blur(9px);animation:swirl 3.4s linear infinite}
-    .spark{position:absolute;width:7px;height:7px;border-radius:50%;background:#bffcff;box-shadow:0 0 10px #6eeeff,0 0 20px rgba(94,233,255,.8);pointer-events:none;z-index:5;animation:spark 1.7s ease-out infinite}
-    .s1{left:65%;top:50%;animation-delay:.1s}.s2{left:78%;top:58%;animation-delay:.7s}.s3{left:72%;top:43%;animation-delay:1.1s}.s4{left:83%;top:48%;animation-delay:1.4s}
-    @keyframes pulse{from{transform:scale(.88);opacity:.72}to{transform:scale(1.12);opacity:1}}
-    @keyframes swirl{to{transform:rotate(360deg)}}
-    @keyframes spark{0%{transform:translate(0,0) scale(.8);opacity:0}20%{opacity:1}100%{transform:translate(26px,-88px) scale(.2);opacity:0}}
-
     .side-scroll{position:fixed;right:1rem;top:50%;transform:translateY(-50%);z-index:42;display:grid;justify-items:center;gap:.35rem}.side-scroll .orb{width:62px;height:62px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7f3ab0,#210d2b 68%);border:2px solid rgba(213,140,255,.36);color:var(--rose)}.side-scroll .rail{width:4px;height:180px;background:linear-gradient(var(--pink),rgba(213,140,255,.18),var(--violet));border-radius:999px}.side-scroll a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:#1b0d24;border:1px solid rgba(213,140,255,.28);color:var(--rose);font-weight:900}
 
     .section{padding-top:4.2rem;scroll-margin-top:5rem}.section-head{display:flex;justify-content:space-between;gap:1.5rem;align-items:end;margin-bottom:1.2rem}.section-head h2{margin:0;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.03em}.section-head p{margin:0;color:var(--muted);max-width:42ch}.panel{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(35,18,47,.96),rgba(17,8,24,.96));box-shadow:0 18px 50px rgba(0,0,0,.26);clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
@@ -65,7 +56,14 @@
     @media(max-width:1080px){.hero{grid-template-columns:1fr}.hero-visual{max-width:100%}.about-grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:680px){.gallery,.links-grid,.donate-grid,.specs{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:.45rem}.side-scroll{display:none}nav.container-fluid ul:nth-child(2) li:not(:last-child){display:none}.art-card img{height:300px}.hero{padding-top:1rem}.hero-visual img{aspect-ratio:4/3}.flame-orb{width:120px;height:120px}}
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flame-orb,.spark{display:none!important}}
-  </style>
+  
+/* Art-led dark elven layout */
+body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main.container{width:calc(100% - 160px);max-width:1480px;padding-top:32px} main>.grid{display:block}.hero{display:flex;flex-direction:column;gap:38px;min-height:0;padding:0 0 50px;perspective:none}.hero-visual{width:100%;max-width:none}.hero-copy{text-align:center;width:100%;min-width:0}.hero-copy p{margin:20px auto;max-width:65ch}.hero h1{font-size:clamp(34px,10.5vw,144px);line-height:1.12;letter-spacing:.015em;transform:none;margin:18px 0;text-shadow:0 2px 0 #a36eba,0 5px 0 #482253,0 12px 24px #000,0 0 28px #9d61ff33;white-space:nowrap}.hero h2{line-height:1.4;font-size:clamp(20px,2.2vw,30px)}.sigil{font-size:clamp(11px,1.2vw,17px);letter-spacing:.11em;max-width:100%}.hero-actions{justify-content:center}.art-stage{position:relative;overflow:hidden;aspect-ratio:2560/1305;background:#090717}.hero-visual img,.hero-visual:hover img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;transform:none;transition:none}.art-stage canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.74}.hero-visual figcaption{text-align:center;padding:12px}.frame{padding:9px}.frame::before,.frame::after{pointer-events:none}.twitch-fire-link{font-family:Georgia,serif;font-size:17px;padding:6px 14px}.twitch-fire-link::after{height:38px;bottom:-6px;filter:blur(3px);clip-path:polygon(0 100%,4% 63%,12% 82%,16% 12%,23% 64%,31% 39%,38% 77%,43% 9%,51% 65%,62% 24%,68% 75%,77% 15%,84% 67%,93% 39%,100% 100%);background:linear-gradient(0deg,#65eaffb3,#afffff80 45%,transparent);animation:lick .9s ease-in-out infinite alternate}.twitch-fire-link:hover::before{box-shadow:0 0 24px #5ee9ff4d}.twitch-fire-link:hover{color:#e7ffff}.side-scroll{right:18px;gap:9px}.side-scroll .orb{border-radius:0;clip-path:polygon(50% 0,90% 25%,100% 50%,90% 75%,50% 100%,10% 75%,0 50%,10% 25%);font-size:25px;box-shadow:inset 0 0 25px #9d61ff88}.side-scroll a{border-radius:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}.side-scroll .rail{height:150px;box-shadow:0 0 12px #bd6dff66}.section-head p{line-height:1.7}.about-grid,.links-grid,.donate-grid{min-width:0}.spec{min-width:0;overflow-wrap:anywhere}.link-card{grid-template-columns:42px minmax(0,1fr) auto;transition:filter .25s,transform .25s}.link-card>span:first-child{display:none}.link-card::before{border-radius:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}.link-card:hover,.donate-card:hover{filter:brightness(1.3);transform:translateY(-4px);border-color:#ff91cd;box-shadow:inset 0 0 28px #9d61ff33}.link-card strong,.link-card small{overflow-wrap:anywhere}.donate-card{grid-template-columns:minmax(0,1fr) auto;transition:filter .25s,transform .25s}.donate-card small{display:block;margin-top:7px;color:var(--muted)}.gallery p{grid-column:1/-1;padding:28px;border:1px solid var(--line);text-align:center;color:var(--muted)}a:focus-visible{outline:2px solid #8ef2ff;outline-offset:4px}footer.container{padding-top:45px}nav ul{margin:0!important}nav.container-fluid ul:nth-child(2){flex-wrap:wrap;justify-content:center}nav.container-fluid ul:nth-child(2) li{display:block!important}nav.container-fluid ul:nth-child(2) a{font-size:16px}
+@media(max-width:1080px){main.container{width:calc(100% - 100px)}.side-scroll{right:6px}.side-scroll .orb{width:46px;height:46px}nav.container-fluid{flex-wrap:wrap;justify-content:center;gap:8px;padding:12px}}
+@media(max-width:680px){main.container{width:calc(100% - 28px);padding-top:20px}.hero{gap:25px;padding-bottom:15px}.hero h1{font-size:10.3vw;letter-spacing:0}.hero-copy p{font-size:16px}.hero-actions{gap:10px}.hero-actions a[role=button]{font-size:15px;padding:12px 20px}.frame{padding:5px}.sigil{padding:10px;font-size:10px;gap:6px}.hero-visual figcaption{padding:9px}.twitch-fire-link{font-size:14px}nav.container-fluid{position:relative;display:flex;flex-direction:column;gap:6px;padding:12px 8px}nav strong{font-size:19px;padding:10px 22px}nav.container-fluid ul:nth-child(2){gap:5px;max-width:100%}nav.container-fluid ul:nth-child(2) li{padding:0}nav.container-fluid ul:nth-child(2) a{font-size:12px;padding:9px 10px;margin:0}.section{padding-top:46px}.section-head h2{font-size:32px}.section-head p{font-size:16px}.about-card,.setup-card{padding:25px 20px}.spec{padding:14px}.link-card{min-height:100px}.side-scroll{display:none}.gallery p{font-size:16px}.art-stage canvas{opacity:.58}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.art-stage canvas{display:none}.link-card:hover,.donate-card:hover{transform:none}}
+
+</style>
 </head>
 <body>
   <nav class="container-fluid">
@@ -76,58 +74,67 @@
   <main class="container" id="top">
     <div class="grid">
       <section class="hero">
-        <div>
-          <span class="sigil">VTuber • Streamer • Artist</span>
-          <hgroup><h1>TVILTOFER</h1><h2>Тёмная эльфийка, стримы, арты и приключения.</h2></hgroup>
-          <p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо). Я занимаюсь всем и общаюсь со всеми.</p>
-          <div class="hero-actions"><a class="primary" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener" role="button">Смотреть Twitch ↗</a><a class="secondary" href="#support" role="button">Поддержать</a></div>
-        </div>
         <div class="hero-visual" id="artScene">
           <div class="frame">
             <figure>
-              <img src="assets/hero.png" alt="Главный арт TVILTOFER">
-              <div class="flame-orb" id="flameOrb"></div><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i>
+              <div class="art-stage"><img src="assets/hero.png" width="2560" height="1305" alt="TVILTOFER — тёмная эльфийка с голубым магическим пламенем"><canvas id="magicFlame" aria-hidden="true"></canvas></div>
+              
               <figcaption><a class="twitch-fire-link" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener">twitch.tv/tviltofer ↗</a></figcaption>
             </figure>
           </div>
         </div>
-        <h3 hidden="">TVILTOFER</h3><p hidden="">VTuber и стример.</p><h3 hidden="">DnD style</h3><p hidden="">Тёмно-эльфийская стилистика.</p>
+        <div class="hero-copy">
+          <span class="sigil">VTuber • Streamer • Artist</span>
+          <hgroup><h1>TVILTOFER</h1><h2>Тёмная фея, VTuber, стример и художник.</h2></hgroup>
+          <p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо). Я занимаюсь всем и общаюсь со всеми.</p>
+          <div class="hero-actions"><a class="primary" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener" role="button">Смотреть Twitch ↗</a><a class="secondary" href="#support" role="button">Поддержать</a></div>
+        </div>
+        
       </section>
     </div>
 
     <div class="side-scroll"><a href="#top" aria-label="Наверх">↑</a><div class="orb">T</div><div class="rail"></div><a href="#support" aria-label="Вниз">↓</a></div>
 
-    <section class="section" id="about"><div class="section-head"><h2>О стримере</h2><p>Тёмно-эльфийский DnD-интерфейс с магическими рамками, рунами и фиолетово-розовым свечением.</p></div><div class="about-grid"><article class="about-card panel"><span class="eyebrow">Character Lore</span><h3>Твилтофер</h3><p>Пою, рисую, играю в игры, психолог (не углублённо). Я занимаюсь всем и общаюсь со всеми.</p></article><article class="setup-card panel"><span class="eyebrow">Equipment</span><h3>Характеристики ПК</h3><div class="specs"><div class="spec"><small>CPU</small><strong>Ryzen 5 5600</strong></div><div class="spec"><small>GPU</small><strong>NVIDIA GeForce RTX 3060 Ti</strong></div><div class="spec"><small>RAM</small><strong>32 ГБ</strong></div><div class="spec"><small>Материнская плата</small><strong>B550</strong></div><div class="spec"><small>VR</small><strong>Oculus Quest 2</strong></div><div class="spec"><small>Аксессуары</small><strong>Крепление + силиконовые чехлы</strong></div></div></article></div></section>
+    <section class="section" id="about"><div class="section-head"><h2>О стримере</h2><p>История персонажа, творчество и снаряжение.</p></div><div class="about-grid"><article class="about-card panel"><span class="eyebrow">Character Lore</span><h3>Твилтофер</h3><p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо). Я занимаюсь всем и общаюсь со всеми.</p></article><article class="setup-card panel"><span class="eyebrow">Equipment / Setup</span><h3>Характеристики ПК</h3><div class="specs"><div class="spec"><small>CPU</small><strong>Ryzen 5 5600</strong></div><div class="spec"><small>GPU</small><strong>NVIDIA GeForce RTX 3060 Ti</strong></div><div class="spec"><small>RAM</small><strong>32 ГБ</strong></div><div class="spec"><small>Материнская плата</small><strong>B550</strong></div><div class="spec"><small>VR</small><strong>Oculus Quest 2</strong></div><div class="spec"><small>Аксессуары</small><strong>Крепление + силиконовые чехлы на контроллеры</strong></div></div></article></div></section>
 
-    <section class="section" id="gallery"><div class="section-head"><h2>Арты</h2><p>Галерея как коллекция артефактов.</p></div><div class="gallery"><p>Коллекция пополняется. Скоро здесь появятся новые арты.</p></div></section>
+    <section class="section" id="gallery"><div class="section-head"><h2>Арты</h2><p>Образы и истории TVILTOFER.</p></div><div class="gallery"><p>Коллекция пополняется. Скоро здесь появятся новые арты.</p></div></section>
 
-    <section class="section" id="links"><div class="section-head"><h2>Аккаунты</h2><p>Другие платформы и официальные аккаунты TVILTOFER.</p></div><div class="links-grid"><a class="link-card" href="https://www.twitch.tv/tviltofer" target="_blank"><span></span><div><strong>Twitch</strong><small>@tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://vk.com/tviltofervtuber" target="_blank"><span></span><div><strong>VK</strong><small>tviltofervtuber</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://t.me/Tviltofer" target="_blank"><span></span><div><strong>Telegram</strong><small>@Tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://discord.gg/ZjJED3ZFna" target="_blank"><span></span><div><strong>Discord</strong><small>Сообщество</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://x.com/tviltofer" target="_blank"><span></span><div><strong>X / Twitter</strong><small>@tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://www.twitch.tv/tviltofer" target="_blank"><span></span><div><strong>Live</strong><small>Смотреть стрим</small></div><span class="arrow">↗</span></a></div></section>
+    <section class="section" id="links"><div class="section-head"><h2>Аккаунты</h2><p>Другие платформы и официальные аккаунты TVILTOFER.</p></div><div class="links-grid"><a class="link-card" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener noreferrer"><span></span><div><strong>Twitch</strong><small>@tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://vk.com/tviltofervtuber" target="_blank" rel="noopener noreferrer"><span></span><div><strong>VK</strong><small>tviltofervtuber</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://t.me/Tviltofer" target="_blank" rel="noopener noreferrer"><span></span><div><strong>Telegram</strong><small>@Tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://discord.gg/ZjJED3ZFna" target="_blank" rel="noopener noreferrer"><span></span><div><strong>Discord</strong><small>Сообщество</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://x.com/tviltofer" target="_blank" rel="noopener noreferrer"><span></span><div><strong>X / Twitter</strong><small>@tviltofer</small></div><span class="arrow">↗</span></a><a class="link-card" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener noreferrer"><span></span><div><strong>Live</strong><small>Смотреть стрим</small></div><span class="arrow">↗</span></a></div></section>
 
-    <section class="section" id="support"><div class="section-head"><h2>Подношения</h2><p>Поддержка оформлена как DnD-панель подношений.</p></div><div class="donate-grid"><a class="donate-card" href="https://donatex.gg/donate/tviltofer" target="_blank"><div><strong>DonateX</strong><small>Разовая поддержка</small></div><span class="arrow">↗</span></a><a class="donate-card" href="https://boosty.to/tviltofer" target="_blank"><div><strong>Boosty</strong><small>Подписка и поддержка</small></div><span class="arrow">↗</span></a></div></section>
+    <section class="section" id="support"><div class="section-head"><h2>Подношения</h2><p>Ваша поддержка помогает творить и открывать новые миры.</p></div><div class="donate-grid"><a class="donate-card" href="https://donatex.gg/donate/tviltofer" target="_blank" rel="noopener noreferrer"><div><strong>DonateX</strong><small>Разовая поддержка</small></div><span class="arrow">↗</span></a><a class="donate-card" href="https://boosty.to/tviltofer" target="_blank" rel="noopener noreferrer"><div><strong>Boosty</strong><small>Подписка и поддержка</small></div><span class="arrow">↗</span></a></div></section>
   </main>
 
-  <section aria-label="Subscribe example"><div class="container"><article><hgroup><h2>Не пропускай стримы</h2><h3>Подпишись на Twitch и Telegram.</h3></hgroup><form class="grid"><input type="text" id="firstname" name="firstname" placeholder="Твоё имя" aria-label="Твоё имя" required=""><input type="email" id="email" name="email" placeholder="Email" aria-label="Email" required=""><button type="submit" onclick="event.preventDefault();this.textContent='Печать наложена ✦'">Напомнить</button></form></article></div></section>
+  
 
   <footer class="container"><small><strong>Создал Adaman</strong></small></footer>
 
   <script>
-    const scene=document.getElementById('artScene');
-    const orb=document.getElementById('flameOrb');
-    if(scene&&orb){
-      scene.addEventListener('mousemove',e=>{
-        const r=scene.getBoundingClientRect();
-        const x=(e.clientX-r.left)/r.width;
-        const y=(e.clientY-r.top)/r.height;
-        const targetX=66+(x-.5)*12;
-        const targetY=56+(y-.5)*22;
-        orb.style.left=targetX+'%';
-        orb.style.top=targetY+'%';
-        orb.style.transform=`translate(-50%,-50%) rotate(${(x-.5)*18}deg) scale(${1+(0.5-y)*0.08})`;
-      });
-      scene.addEventListener('mouseleave',()=>{
-        orb.style.left='71%';orb.style.top='58%';orb.style.transform='translate(-50%,-50%)';
-      });
-    }
-  </script>
+(() => {
+ const canvas=document.getElementById('magicFlame'), stage=canvas?.parentElement;
+ if(!canvas||!stage||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const ctx=canvas.getContext('2d'); if(!ctx)return;
+ const shape=new Path2D('M260 370 C350 380 440 342 510 280 C610 190 650 125 720 132 C768 130 785 142 795 144 C792 129 795 112 807 103 C803 145 832 163 858 184 C893 213 906 255 890 294 C884 321 861 347 825 364 C846 324 861 278 850 230 C849 294 809 352 762 378 C783 335 793 284 779 252 C775 300 739 349 704 370 C706 328 742 290 724 260 C700 230 671 216 650 225 C590 245 536 282 491 314 C418 361 347 384 260 370 Z');
+ let tx=0,ty=0,mx=0,my=0,visible=true,last=0,raf=0;
+ const motes=Array.from({length:36},(_,i)=>({phase:i/36,x:630+Math.random()*245,y:190+Math.random()*155,s:.45+Math.random()*1.1}));
+ const fit=()=>{const r=stage.getBoundingClientRect();const d=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);};
+ new ResizeObserver(fit).observe(stage);fit();
+ stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*10;ty=((e.clientY-r.top)/r.height-.5)*10;},{passive:true});
+ stage.addEventListener('pointerleave',()=>{tx=0;ty=0;});
+ function draw(now){raf=0;if(!visible||document.hidden)return;raf=requestAnimationFrame(draw);if(now-last<32)return;last=now;
+ const t=now/1000;mx+=(tx-mx)*.075;my+=(ty-my)*.075;
+ ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.setTransform(canvas.width/1000,0,0,canvas.height/510,0,0);ctx.translate(mx,my);
+ ctx.save();ctx.clip(shape);
+ const heat=ctx.createLinearGradient(470,320,850,180);heat.addColorStop(0,'rgba(30,170,255,.05)');heat.addColorStop(.5,'rgba(93,245,255,.18)');heat.addColorStop(1,'rgba(224,255,255,.1)');ctx.fillStyle=heat;ctx.globalAlpha=.65+Math.sin(t*2.1)*.15;ctx.fill(shape);ctx.globalAlpha=1;
+ // Continuous streams clipped to the painted flame, with layered soft bloom.
+ for(let i=0;i<22;i++){const q=i/22, wave=Math.sin(t*1.8+i*.67)*5;ctx.beginPath();ctx.moveTo(265,372+q*8);ctx.bezierCurveTo(450,370+wave,555,175+q*110+wave,715,148+q*95);ctx.bezierCurveTo(825,140+q*45+wave,868,220+q*20,812-q*84,379);ctx.lineWidth=2.3+Math.sin(t*2+i)*.7;ctx.strokeStyle=i%3===0?'rgba(216,255,255,.16)':'rgba(42,214,255,.13)';ctx.shadowColor='#51e8ff';ctx.shadowBlur=9;ctx.stroke();}
+ ctx.shadowBlur=0;ctx.globalAlpha=.13+.04*Math.sin(t*2.8);ctx.lineWidth=14;ctx.strokeStyle='#91faff';ctx.stroke(shape);ctx.restore();ctx.globalAlpha=1;
+ // Fine sparks lift off the stream, never forming a rotating ball.
+ for(const p of motes){const age=(t*.23+p.phase)%1;const x=p.x+Math.sin(t*.8+p.phase*20)*8+age*14;const y=p.y-age*80;ctx.globalAlpha=Math.sin(age*Math.PI)*.55;ctx.beginPath();ctx.arc(x,y,p.s*(1-age*.6),0,Math.PI*2);ctx.fillStyle='#d5ffff';ctx.shadowColor='#64eaff';ctx.shadowBlur=5;ctx.fill();}ctx.globalAlpha=1;ctx.shadowBlur=0;
+ }
+ const resume=()=>{if(visible&&!document.hidden&&!raf)raf=requestAnimationFrame(draw);};
+ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(!visible){cancelAnimationFrame(raf);raf=0;}else resume();},{rootMargin:'100px'}).observe(stage);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else resume();});resume();
+})();
+</script>
 
 </body></html>
