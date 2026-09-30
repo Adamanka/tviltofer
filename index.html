@@ -64,11 +64,14 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.art-stage canvas{display:none}.link-card:hover,.donate-card:hover{transform:none}}
 
 .link-ember{position:absolute;width:3px;height:3px;background:#caffff;box-shadow:0 0 8px #64eaff;opacity:0;pointer-events:none;bottom:4px;left:20%;border-radius:50%}.link-ember.e2{left:55%;animation-delay:.3s}.link-ember.e3{left:80%;animation-delay:.7s}.twitch-fire-link:hover .link-ember{animation:ember-rise 1.3s ease-out infinite}.twitch-fire-link:hover .e2{animation-delay:.3s}.twitch-fire-link:hover .e3{animation-delay:.7s}@keyframes ember-rise{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}100%{opacity:0;transform:translate(7px,-35px) scale(.2)}}
+
+.skip-link{position:fixed;top:12px;left:12px;z-index:100;padding:12px 18px;background:#291638;color:#fff;transform:translateY(-160%)}.skip-link:focus{transform:translateY(0)}.brand-link{padding:0;margin:0}.flame-toggle{display:block;width:auto;margin:14px auto 0;padding:8px 18px;border:1px solid #a66ad5;background:#21102e;color:#efdef7;font-size:14px;border-radius:0}.flame-toggle[hidden]{display:none}.flame-toggle:hover{background:#3a1b4e}.flame-toggle:focus-visible{outline:2px solid #ffb4dd;outline-offset:4px}a:focus-visible{outline-color:#ffb4dd}.twitch-fire-link:focus-visible .link-ember{animation:ember-rise 1.3s ease-out infinite}@media(prefers-reduced-motion:reduce){.twitch-fire-link .link-ember{animation:none!important}}
 </style>
 </head>
 <body>
-  <nav class="container-fluid">
-    <ul><li><strong>TVILTOFER</strong></li></ul>
+  <a class="skip-link" href="#top">Перейти к содержимому</a>
+  <nav class="container-fluid" aria-label="Основная навигация">
+    <ul><li><a class="brand-link" href="#top" aria-label="TVILTOFER — наверх"><strong>TVILTOFER</strong></a></li></ul>
     <ul><li><a href="#about">Обо мне</a></li><li><a href="#gallery">Арты</a></li><li><a href="#links">Аккаунты</a></li><li><a href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener" role="button">Twitch ↗</a></li></ul>
   </nav>
 
@@ -78,7 +81,8 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
         <div class="hero-visual" id="artScene">
           <div class="frame">
             <figure>
-              <div class="art-stage"><img src="assets/hero.png" width="2560" height="1305" alt="TVILTOFER — тёмная эльфийка с голубым магическим пламенем"><canvas id="magicFlame" aria-hidden="true"></canvas></div>
+              <div class="art-stage"><img src="assets/hero.png" width="2560" height="1305" fetchpriority="high" decoding="async" alt="TVILTOFER — тёмная эльфийка с голубым магическим пламенем"><canvas id="magicFlame" aria-hidden="true"></canvas></div>
+              <button class="flame-toggle" type="button" aria-pressed="false" hidden>Остановить магию</button>
               
               <figcaption><a class="twitch-fire-link" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener">twitch.tv/tviltofer ↗<span class="link-ember e1" aria-hidden="true"></span><span class="link-ember e2" aria-hidden="true"></span><span class="link-ember e3" aria-hidden="true"></span></a></figcaption>
             </figure>
@@ -94,7 +98,7 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
       </section>
     </div>
 
-    <div class="side-scroll"><a href="#top" aria-label="Наверх">↑</a><div class="orb">T</div><div class="rail"></div><a href="#support" aria-label="Вниз">↓</a></div>
+    <div class="side-scroll" aria-label="Переходы по странице"><a href="#top" aria-label="Наверх">↑</a><div class="orb" aria-hidden="true">T</div><div class="rail" aria-hidden="true"></div><a href="#support" aria-label="Вниз">↓</a></div>
 
     <section class="section" id="about"><div class="section-head"><h2>О стримере</h2><p>История персонажа, творчество и снаряжение.</p></div><div class="about-grid"><article class="about-card panel"><span class="eyebrow">Character Lore</span><h3>Твилтофер</h3><p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо). Я занимаюсь всем и общаюсь со всеми.</p></article><article class="setup-card panel"><span class="eyebrow">Equipment / Setup</span><h3>Характеристики ПК</h3><div class="specs"><div class="spec"><small>CPU</small><strong>Ryzen 5 5600</strong></div><div class="spec"><small>GPU</small><strong>NVIDIA GeForce RTX 3060 Ti</strong></div><div class="spec"><small>RAM</small><strong>32 ГБ</strong></div><div class="spec"><small>Материнская плата</small><strong>B550</strong></div><div class="spec"><small>VR</small><strong>Oculus Quest 2</strong></div><div class="spec"><small>Аксессуары</small><strong>Крепление + силиконовые чехлы на контроллеры</strong></div></div></article></div></section>
 
@@ -112,16 +116,18 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
   <script>
 (() => {
  const canvas=document.getElementById('magicFlame'), stage=canvas?.parentElement;
- if(!canvas||!stage||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ if(!canvas||!stage)return;
  const ctx=canvas.getContext('2d'); if(!ctx)return;
  const shape=new Path2D('M260 370 C350 380 440 342 510 280 C610 190 650 125 720 132 C768 130 785 142 795 144 C792 129 795 112 807 103 C803 145 832 163 858 184 C893 213 906 255 890 294 C884 321 861 347 825 364 C846 324 861 278 850 230 C849 294 809 352 762 378 C783 335 793 284 779 252 C775 300 739 349 704 370 C706 328 742 290 724 260 C700 230 671 216 650 225 C590 245 536 282 491 314 C418 361 347 384 260 370 Z');
- let tx=0,ty=0,mx=0,my=0,visible=true,last=0,raf=0;
+ let tx=0,ty=0,mx=0,my=0,visible=true,last=0,raf=0,paused=false;
+ const motion=matchMedia("(prefers-reduced-motion: reduce)");
+ const toggle=document.querySelector(".flame-toggle"); if(toggle)toggle.hidden=motion.matches;
  const motes=Array.from({length:36},(_,i)=>({phase:i/36,x:630+Math.random()*245,y:190+Math.random()*155,s:.45+Math.random()*1.1}));
  const fit=()=>{const r=stage.getBoundingClientRect();const d=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);};
  new ResizeObserver(fit).observe(stage);fit();
  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*10;ty=((e.clientY-r.top)/r.height-.5)*10;},{passive:true});
  stage.addEventListener('pointerleave',()=>{tx=0;ty=0;});
- function draw(now){raf=0;if(!visible||document.hidden)return;raf=requestAnimationFrame(draw);if(now-last<32)return;last=now;
+ function draw(now){raf=0;if(!visible||document.hidden||paused||motion.matches)return;raf=requestAnimationFrame(draw);if(now-last<32)return;last=now;
  const t=now/1000;mx+=(tx-mx)*.075;my+=(ty-my)*.075;
  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.setTransform(canvas.width/1000,0,0,canvas.height/510,0,0);ctx.translate(mx,my);
  ctx.save();ctx.clip(shape);
@@ -132,8 +138,10 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
  // Fine sparks lift off the stream, never forming a rotating ball.
  for(const p of motes){const age=(t*.23+p.phase)%1;const x=p.x+Math.sin(t*.8+p.phase*20)*8+age*14;const y=p.y-age*80;ctx.globalAlpha=Math.sin(age*Math.PI)*.55;ctx.beginPath();ctx.arc(x,y,p.s*(1-age*.6),0,Math.PI*2);ctx.fillStyle='#d5ffff';ctx.shadowColor='#64eaff';ctx.shadowBlur=5;ctx.fill();}ctx.globalAlpha=1;ctx.shadowBlur=0;
  }
- const resume=()=>{if(visible&&!document.hidden&&!raf)raf=requestAnimationFrame(draw);};
+ const resume=()=>{if(visible&&!document.hidden&&!paused&&!motion.matches&&!raf)raf=requestAnimationFrame(draw);};
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(!visible){cancelAnimationFrame(raf);raf=0;}else resume();},{rootMargin:'100px'}).observe(stage);
+ toggle?.addEventListener('click',()=>{paused=!paused;toggle.setAttribute('aria-pressed',String(paused));toggle.textContent=paused?'Оживить магию':'Остановить магию';if(paused){cancelAnimationFrame(raf);raf=0;ctx.clearRect(0,0,canvas.width,canvas.height);}else resume();});
+ motion.addEventListener('change',()=>{toggle.hidden=motion.matches;if(motion.matches){cancelAnimationFrame(raf);raf=0;ctx.clearRect(0,0,canvas.width,canvas.height);}else resume();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else resume();});resume();
 })();
 </script>
