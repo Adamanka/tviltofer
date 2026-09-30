@@ -63,6 +63,7 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
 @media(max-width:680px){main.container{width:calc(100% - 28px);padding-top:20px}.hero{gap:25px;padding-bottom:15px}.hero h1{font-size:10.3vw;letter-spacing:0}.hero-copy p{font-size:16px}.hero-actions{gap:10px}.hero-actions a[role=button]{font-size:15px;padding:12px 20px}.frame{padding:5px}.sigil{padding:10px;font-size:10px;gap:6px}.hero-visual figcaption{padding:9px}.twitch-fire-link{font-size:14px}nav.container-fluid{position:relative;display:flex;flex-direction:column;gap:6px;padding:12px 8px}nav strong{font-size:19px;padding:10px 22px}nav.container-fluid ul:nth-child(2){gap:5px;max-width:100%}nav.container-fluid ul:nth-child(2) li{padding:0}nav.container-fluid ul:nth-child(2) a{font-size:12px;padding:9px 10px;margin:0}.section{padding-top:46px}.section-head h2{font-size:32px}.section-head p{font-size:16px}.about-card,.setup-card{padding:25px 20px}.spec{padding:14px}.link-card{min-height:100px}.side-scroll{display:none}.gallery p{font-size:16px}.art-stage canvas{opacity:.58}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.art-stage canvas{display:none}.link-card:hover,.donate-card:hover{transform:none}}
 
+.link-ember{position:absolute;width:3px;height:3px;background:#caffff;box-shadow:0 0 8px #64eaff;opacity:0;pointer-events:none;bottom:4px;left:20%;border-radius:50%}.link-ember.e2{left:55%;animation-delay:.3s}.link-ember.e3{left:80%;animation-delay:.7s}.twitch-fire-link:hover .link-ember{animation:ember-rise 1.3s ease-out infinite}.twitch-fire-link:hover .e2{animation-delay:.3s}.twitch-fire-link:hover .e3{animation-delay:.7s}@keyframes ember-rise{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}100%{opacity:0;transform:translate(7px,-35px) scale(.2)}}
 </style>
 </head>
 <body>
@@ -79,7 +80,7 @@ body{overflow-x:clip} h1,h2,h3{font-family:Georgia,"Times New Roman",serif} main
             <figure>
               <div class="art-stage"><img src="assets/hero.png" width="2560" height="1305" alt="TVILTOFER — тёмная эльфийка с голубым магическим пламенем"><canvas id="magicFlame" aria-hidden="true"></canvas></div>
               
-              <figcaption><a class="twitch-fire-link" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener">twitch.tv/tviltofer ↗</a></figcaption>
+              <figcaption><a class="twitch-fire-link" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener">twitch.tv/tviltofer ↗<span class="link-ember e1" aria-hidden="true"></span><span class="link-ember e2" aria-hidden="true"></span><span class="link-ember e3" aria-hidden="true"></span></a></figcaption>
             </figure>
           </div>
         </div>
