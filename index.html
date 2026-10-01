@@ -110,6 +110,12 @@ main:focus{outline:none}
 @keyframes vine-unfurl{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}@keyframes leaf-reveal{from{opacity:0}to{opacity:.85}}@keyframes flower-open{from{transform:scale(0) rotate(-35deg)}to{transform:scale(1) rotate(0)}}
 @media(max-width:680px){.intro-window{margin-top:24px;padding:25px 27px;border-radius:18px 5px}.intro-window h2{font-size:22px}.botanical-edge{width:48px}.botanical-left{left:-17px}.botanical-right{right:-17px}.intro-flower{width:30px;height:30px}.flower-first{left:-12px}.flower-second{right:-12px}.flower-third{right:2px;top:-14px;width:26px;height:26px}}
 @media(prefers-reduced-motion:reduce){.intro-window .vine-stem{stroke-dashoffset:0!important}.intro-window .vine-leaves{opacity:.85!important}.intro-window .flower-bloom{transform:none!important}}
+
+/* Optical size compensation for the supplied typewriter font. */
+.intro-window h2{font-size:clamp(24px,2.6vw,34px)}
+.intro-window p{font-size:clamp(20px,2vw,26px);line-height:1.75}
+.spec small{font-size:17px;line-height:1.55}.spec strong{font-size:22px;line-height:1.55}
+@media(max-width:680px){.intro-window h2{font-size:24px}.intro-window p{font-size:20px}.spec small{font-size:16px}.spec strong{font-size:19px}}
 </style>
 </head>
 <body>
