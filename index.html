@@ -4,6 +4,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TVILTOFER — Dark Elven DnD</title>
   <meta name="description" content="TVILTOFER — тёмно-эльфийская DnD-страница: стримы, арты, аккаунты, оборудование и поддержка.">
+  <meta name="theme-color" content="#180b24">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://adamanka.github.io/tviltofer/">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="TVILTOFER">
+  <meta property="og:title" content="TVILTOFER — VTuber, стример и художник">
+  <meta property="og:description" content="Тёмная фея TVILTOFER: творчество, стримы, арты и сообщество.">
+  <meta property="og:url" content="https://adamanka.github.io/tviltofer/">
+  <meta property="og:image" content="https://adamanka.github.io/tviltofer/assets/hero.png">
+  <meta property="og:image:width" content="2560">
+  <meta property="og:image:height" content="1305">
+  <meta property="og:image:alt" content="TVILTOFER с голубым магическим пламенем">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TVILTOFER — VTuber, стример и художник">
+  <meta name="twitter:description" content="Тёмная фея TVILTOFER: творчество, стримы, арты и сообщество.">
+  <meta name="twitter:image" content="https://adamanka.github.io/tviltofer/assets/hero.png">
+  <meta name="twitter:image:alt" content="TVILTOFER с голубым магическим пламенем">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cpath%20fill%3D%22%23180b24%22%20stroke%3D%22%23d890dd%22%20stroke-width%3D%222%22%20d%3D%22M32%203%2057%2017v30L32%2061%207%2047V17Z%22%2F%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23955cc0%22%20d%3D%22m7%2017%2050%2030M57%2017%207%2047M32%203v58%22%2F%3E%3Cpath%20fill%3D%22%23ffcee7%22%20d%3D%22M18%2019h28v6H35v23h-6V25H18Z%22%2F%3E%3C%2Fsvg%3E">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
 :root{--void:#08050e;--violet:#9d61ff;--pink:#ff6cb3;--rose:#ffc0df;--silver:#efe8f8;--muted:#c7b7d0;--line:#cb8bff42;--glow:0 0 24px #9d61ff38;--cut:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
@@ -20,6 +40,17 @@ main.container{width:calc(100% - 160px);max-width:1480px;padding-top:32px;paddin
 @media(max-width:360px){.specs{grid-template-columns:1fr}.sigil{letter-spacing:.04em}nav ul:nth-child(2) a{padding:11px 8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.art-stage canvas{display:none}.link-card:hover,.donate-card:hover{transform:none}}
 
+
+/* Quick section access stays within reach on small screens. */
+.mobile-shortcuts{display:none}
+@media(max-width:680px){
+ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+ .mobile-shortcuts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;inset:auto 0 0;z-index:60;padding:7px 6px calc(7px + env(safe-area-inset-bottom,0px));background:#140a1eef;border-top:1px solid #c384db66;backdrop-filter:blur(16px);box-shadow:0 -8px 24px #0005}
+ .mobile-shortcuts a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:48px;margin:0;padding:5px 2px;font-size:11px;line-height:1.3;color:#ccb5d7;border:1px solid transparent;border-radius:0;overflow-wrap:anywhere}
+ .mobile-shortcuts .shortcut-rune{font-size:17px;line-height:1;color:#d394d5}
+ .mobile-shortcuts a[aria-current=location]{color:#ffe5f2;border-color:#d98cca55;background:#4b245b66}
+ .mobile-shortcuts a:focus-visible{outline-offset:-3px}
+}
 </style>
 </head>
 <body>
@@ -164,4 +195,35 @@ main.container{width:calc(100% - 160px);max-width:1480px;padding-top:32px;paddin
 })();
 </script>
 
+
+  <nav class="mobile-shortcuts" aria-label="Быстрые переходы">
+    <a href="#top" aria-current="location"><span class="shortcut-rune" aria-hidden="true">⌂</span>Главная</a>
+    <a href="#about"><span class="shortcut-rune" aria-hidden="true">◇</span>Обо мне</a>
+    <a href="#gallery"><span class="shortcut-rune" aria-hidden="true">✧</span>Арты</a>
+    <a href="#links"><span class="shortcut-rune" aria-hidden="true">✦</span>Аккаунты</a>
+    <a href="#support"><span class="shortcut-rune" aria-hidden="true">♡</span>Поддержка</a>
+  </nav>
+
+  <script>
+(() => {
+  const nav=document.querySelector('.mobile-shortcuts');
+  const links=Array.from(nav.querySelectorAll('a'));
+  const sections=links.map(link=>document.querySelector(link.getAttribute('href')));
+  const small=matchMedia('(max-width:680px)');
+  let pending=false;
+  const update=()=>{
+    pending=false;if(!small.matches)return;
+    const line=innerHeight*.35;
+    let current=0;
+    sections.forEach((section,index)=>{if(section.getBoundingClientRect().top<=line)current=index;});
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)current=links.length-1;
+    links.forEach((link,index)=>{if(index===current)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+  };
+  const schedule=()=>{if(small.matches&&!pending){pending=true;requestAnimationFrame(update);}};
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',schedule,{passive:true});
+  small.addEventListener('change',schedule);
+  update();
+})();
+  </script>
 </body></html>
