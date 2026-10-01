@@ -153,7 +153,7 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   document.addEventListener('click',event=>{
     if(reduced.matches||!(event.target instanceof Element))return;
-    const control=event.target.closest('.hero-actions a,nav.container-fluid ul:nth-child(2) a,.mobile-shortcuts a,.side-scroll a');
+    const control=event.target.closest('.hero-actions a,nav.container-fluid ul:nth-child(2) a,.mobile-shortcuts a,.side-scroll a,.copy-nick');
     if(!control)return;
     control.querySelector('.button-wave')?.remove();
     const wave=document.createElement('span');
@@ -176,4 +176,54 @@
     observer.disconnect();
   },{threshold:.2});
   observer.observe(frame);
+})();
+
+(() => {
+  const buttons=Array.from(document.querySelectorAll('.copy-nick'));
+  const status=document.getElementById('copyStatus');
+  const timers=new WeakMap();
+  if(!status||!buttons.length)return;
+  const legacyCopy=text=>{
+    const focused=document.activeElement;
+    const selection=document.getSelection();
+    const ranges=selection?Array.from({length:selection.rangeCount},(_,i)=>selection.getRangeAt(i).cloneRange()):[];
+    const field=document.createElement('textarea');
+    field.value=text;field.readOnly=true;field.setAttribute('aria-hidden','true');field.tabIndex=-1;
+    Object.assign(field.style,{position:'fixed',top:'0',left:'0',width:'1px',height:'1px',padding:'0',border:'0',opacity:'0'});
+    document.body.append(field);
+    try{
+      field.focus({preventScroll:true});field.select();field.setSelectionRange(0,text.length);
+      if(!document.execCommand('copy'))throw new Error('Copy unavailable');
+    }finally{
+      field.remove();
+      if(focused instanceof HTMLElement)focused.focus({preventScroll:true});
+      if(selection){selection.removeAllRanges();ranges.forEach(range=>selection.addRange(range));}
+    }
+  };
+  const writeNick=async text=>{
+    if(navigator.clipboard?.writeText){
+      try{await navigator.clipboard.writeText(text);return;}catch{}
+    }
+    legacyCopy(text);
+  };
+  buttons.forEach(button=>{
+    button.hidden=false;
+    button.parentElement.querySelector('.nick-fallback').hidden=true;
+    button.addEventListener('click',async()=>{
+      if(button.getAttribute('aria-busy')==='true')return;
+      clearTimeout(timers.get(button));
+      button.classList.remove('is-copied','copy-failed');
+      button.setAttribute('aria-busy','true');status.textContent='';
+      const feedback=button.querySelector('.copy-feedback');
+      try{
+        await writeNick(button.dataset.nick);
+        button.classList.add('is-copied');feedback.textContent='Скопировано';
+        status.textContent='Ник '+button.dataset.platform+' '+button.dataset.nick+' скопирован.';
+      }catch{
+        button.classList.add('copy-failed');feedback.textContent='Не скопировано';
+        status.textContent='Не удалось скопировать ник. Выделите '+button.dataset.nick+' и скопируйте вручную.';
+      }finally{button.removeAttribute('aria-busy');}
+      timers.set(button,setTimeout(()=>button.classList.remove('is-copied','copy-failed'),2200));
+    });
+  });
 })();
