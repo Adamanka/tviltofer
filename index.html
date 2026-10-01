@@ -77,6 +77,12 @@ main:focus{outline:none}
 .section-rune::after{content:"";position:absolute;inset:14% 12%;background:#c77cce;opacity:.1;filter:blur(9px);pointer-events:none}
 @keyframes rune-turn{from{transform:rotateX(-10deg) rotateY(-24deg)}to{transform:rotateX(-10deg) rotateY(336deg)}}
 @media(prefers-reduced-motion:reduce){.rune-core{animation:none;transform:rotateX(-10deg) rotateY(-24deg)}}
+
+/* One quiet ripple per activation; no continuous button animation. */
+:is(.hero-actions a,nav.container-fluid ul:nth-child(2) a,.mobile-shortcuts a,.side-scroll a){position:relative;overflow:hidden}
+.button-wave{position:absolute;left:50%;top:50%;width:var(--wave-size);height:var(--wave-size);border-radius:50%;border:1px solid #ffd8ef66;background:radial-gradient(circle,transparent 45%,#e8b8ff24 60%,#ffc4e62e 69%,transparent 73%);pointer-events:none;z-index:2;animation:button-wave .55s cubic-bezier(.15,.6,.3,1) both}
+@keyframes button-wave{0%{transform:translate(-50%,-50%) scale(.02);opacity:.8}65%{opacity:.35}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+@media(prefers-reduced-motion:reduce){.button-wave{display:none}}
 </style>
 </head>
 <body>
@@ -284,4 +290,21 @@ main:focus{outline:none}
   update();
 })();
   </script>
+<script>
+(() => {
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  document.addEventListener('click',event=>{
+    if(reduced.matches||!(event.target instanceof Element))return;
+    const control=event.target.closest('.hero-actions a,nav.container-fluid ul:nth-child(2) a,.mobile-shortcuts a,.side-scroll a');
+    if(!control)return;
+    control.querySelector('.button-wave')?.remove();
+    const wave=document.createElement('span');
+    wave.className='button-wave';wave.setAttribute('aria-hidden','true');
+    wave.style.setProperty('--wave-size',Math.hypot(control.clientWidth,control.clientHeight)*2+'px');
+    control.append(wave);
+    // Cleanup also works if the motion preference changes during the ripple.
+    setTimeout(()=>wave.remove(),600);
+  });
+})();
+</script>
 </body></html>
