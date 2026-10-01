@@ -101,6 +101,17 @@ main:focus{outline:none}
 .hero{margin-bottom:24px;padding-bottom:32px}#about{padding-top:56px}
 @media(max-width:680px){.hero{margin-bottom:16px;padding-bottom:15px}#about{padding-top:32px}}
 @media(prefers-reduced-motion:reduce){:is(.hero-actions a,nav.container-fluid ul:nth-child(2) a,.brand-link,.mobile-shortcuts a,.side-scroll a,.link-card,.donate-card):not([aria-disabled="true"]):not([disabled]):not(.is-error){transition:none}:is(.hero-actions a,nav.container-fluid ul:nth-child(2) a,.brand-link,.mobile-shortcuts a,.side-scroll a,.link-card,.donate-card):not([aria-disabled="true"]):not([disabled]):not(.is-error):hover{transform:none}}
+
+/* A quiet botanical frame; grows once when its text enters view. */
+.intro-window{position:relative;isolation:isolate;margin:30px auto 0;max-width:1040px;padding:30px 54px;border:1px solid #c48bc54a;border-radius:24px 6px;background:radial-gradient(ellipse at 0 0,#82519a1c,transparent 65%),linear-gradient(135deg,#21112be6,#100817e8);box-shadow:inset 0 0 0 6px #9d61ff05,0 14px 32px #0002}
+.intro-window-copy{position:relative;z-index:1}.intro-window h2{margin:0;line-height:1.4}.intro-window p{margin:18px auto 0;font-size:clamp(16px,1.6vw,21px);line-height:1.8}
+.botanical-edge{position:absolute;top:-13px;bottom:-13px;width:76px;pointer-events:none;z-index:2}.botanical-left{left:-28px}.botanical-right{right:-28px;transform:scaleX(-1)}.intro-vine{display:block;width:100%;height:100%;overflow:visible}.vine-stem{fill:none;stroke:#aa7cbd;stroke-width:1.8;stroke-linecap:round;vector-effect:non-scaling-stroke}.vine-leaves{fill:#62426b;stroke:#b17fbe;stroke-width:1;opacity:.85}
+.intro-flower{position:absolute;width:42px;height:42px;pointer-events:none;z-index:3;filter:drop-shadow(0 0 6px #f19ccc25)}.flower-first{left:-18px;top:20%}.flower-second{right:-19px;bottom:13%}.flower-third{right:5px;top:-20px;width:34px;height:34px}.flower-bloom{transform-origin:32px 32px}.flower-bloom path{fill:#cb91bd;stroke:#f2c3df;stroke-width:1}.flower-bloom circle{fill:#efd1a5;stroke:#7b4b69;stroke-width:1.5}
+.intro-window.awaiting-growth .vine-stem{stroke-dasharray:100;stroke-dashoffset:100}.intro-window.awaiting-growth .vine-leaves{opacity:0}.intro-window.awaiting-growth .flower-bloom{transform:scale(0)}
+.intro-window.is-grown .vine-stem{stroke-dasharray:100;animation:vine-unfurl 2.4s ease-out both}.intro-window.is-grown .vine-leaves{animation:leaf-reveal 1.5s .6s ease-out both}.intro-window.is-grown .flower-bloom{animation:flower-open 1.4s var(--bloom-delay) cubic-bezier(.2,.7,.3,1) both}
+@keyframes vine-unfurl{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}@keyframes leaf-reveal{from{opacity:0}to{opacity:.85}}@keyframes flower-open{from{transform:scale(0) rotate(-35deg)}to{transform:scale(1) rotate(0)}}
+@media(max-width:680px){.intro-window{margin-top:24px;padding:25px 27px;border-radius:18px 5px}.intro-window h2{font-size:22px}.botanical-edge{width:48px}.botanical-left{left:-17px}.botanical-right{right:-17px}.intro-flower{width:30px;height:30px}.flower-first{left:-12px}.flower-second{right:-12px}.flower-third{right:2px;top:-14px;width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.intro-window .vine-stem{stroke-dashoffset:0!important}.intro-window .vine-leaves{opacity:.85!important}.intro-window .flower-bloom{transform:none!important}}
 </style>
 </head>
 <body>
@@ -122,8 +133,8 @@ main:focus{outline:none}
         </div>
         <div class="hero-copy">
           <span class="sigil">VTuber • Streamer • Artist</span>
-          <hgroup><h1 id="hero-title">TVILTOFER</h1><h2>Тёмная фея, VTuber, стример и художник.</h2></hgroup>
-          <p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо).<br>Я занимаюсь всем и общаюсь со всеми.</p>
+          <h1 id="hero-title">TVILTOFER</h1>
+          <div class="intro-window"><div class="botanical-edge botanical-left"><svg class="intro-vine" viewBox="0 0 90 300" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="vine-stem" pathLength="100" d="M78 292C17 289 13 260 30 230S66 193 34 159 5 111 34 79 17 27 76 9M30 230C8 239 4 219 19 207M34 159C64 152 63 134 49 126M34 79C8 82 9 63 20 53"/><g class="vine-leaves"><path d="M27 244Q-2 246 10 220Q25 225 27 244Z"/><path d="M35 193Q63 177 63 205Q48 211 35 193Z"/><path d="M31 135Q5 140 12 115Q27 117 31 135Z"/><path d="M34 73Q64 56 61 85Q46 92 34 73Z"/><path d="M32 38Q9 38 17 18Q31 22 32 38Z"/></g></svg></div><div class="botanical-edge botanical-right"><svg class="intro-vine" viewBox="0 0 90 300" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="vine-stem" pathLength="100" d="M78 292C17 289 13 260 30 230S66 193 34 159 5 111 34 79 17 27 76 9M30 230C8 239 4 219 19 207M34 159C64 152 63 134 49 126M34 79C8 82 9 63 20 53"/><g class="vine-leaves"><path d="M27 244Q-2 246 10 220Q25 225 27 244Z"/><path d="M35 193Q63 177 63 205Q48 211 35 193Z"/><path d="M31 135Q5 140 12 115Q27 117 31 135Z"/><path d="M34 73Q64 56 61 85Q46 92 34 73Z"/><path d="M32 38Q9 38 17 18Q31 22 32 38Z"/></g></svg></div><svg class="intro-flower flower-first" style="--bloom-delay:1.5s" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="flower-bloom"><path transform="rotate(0 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(60 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(120 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(180 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(240 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(300 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><circle cx="32" cy="32" r="5"/></g></svg><svg class="intro-flower flower-second" style="--bloom-delay:2.1s" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="flower-bloom"><path transform="rotate(0 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(60 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(120 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(180 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(240 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(300 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><circle cx="32" cy="32" r="5"/></g></svg><svg class="intro-flower flower-third" style="--bloom-delay:2.7s" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="flower-bloom"><path transform="rotate(0 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(60 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(120 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(180 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(240 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><path transform="rotate(300 32 32)" d="M32 31C20 22 22 9 32 3C42 9 44 22 32 31Z"/><circle cx="32" cy="32" r="5"/></g></svg><div class="intro-window-copy"><h2>Тёмная фея, VTuber, стример и художник.</h2><p>Я Твилтофер, пою, рисую, играю в игры, психолог (не углублённо).<br>Я занимаюсь всем и общаюсь со всеми.</p></div></div>
           <div class="hero-actions"><a class="primary" href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener">Смотреть Twitch ↗<span class="visually-hidden"> (откроется в новой вкладке)</span></a><a class="secondary" href="#support">Поддержать</a></div>
         </div>
         
@@ -323,6 +334,20 @@ main:focus{outline:none}
     // Cleanup also works if the motion preference changes during the ripple.
     setTimeout(()=>wave.remove(),600);
   });
+})();
+</script>
+<script>
+(() => {
+  const frame=document.querySelector('.intro-window');
+  if(!frame||matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  frame.classList.add('awaiting-growth');
+  const observer=new IntersectionObserver(entries=>{
+    if(!entries.some(entry=>entry.isIntersecting))return;
+    frame.classList.remove('awaiting-growth');
+    frame.classList.add('is-grown');
+    observer.disconnect();
+  },{threshold:.2});
+  observer.observe(frame);
 })();
 </script>
 </body></html>
