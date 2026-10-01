@@ -116,12 +116,25 @@ main:focus{outline:none}
 .intro-window p{font-size:clamp(20px,2vw,26px);line-height:1.75}
 .spec small{font-size:17px;line-height:1.55}.spec strong{font-size:22px;line-height:1.55}
 @media(max-width:680px){.intro-window h2{font-size:24px}.intro-window p{font-size:20px}.spec small{font-size:16px}.spec strong{font-size:19px}}
+
+/* Let the supplied font retain its natural weight in section titles. */
+.section-head h2{font-weight:400;font-synthesis:none}
+/* A slow, single botanical reveal around the unchanged brand silhouette. */
+nav .brand-link{position:relative;overflow:visible}.brand-vines{position:absolute;inset:-7px -9px;width:calc(100% + 18px);height:calc(100% + 14px);pointer-events:none;overflow:visible}
+.brand-stem{fill:none;stroke:#b087bd;stroke-width:1.2;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:100;animation:brand-grow 7s ease-out both}.brand-leaves{fill:#77547d;stroke:#bb94c4;stroke-width:.6;animation:leaf-reveal 3s 2s ease-out both}
+.brand-flower path{fill:#cd9bbb;stroke:#f3c7df;stroke-width:.6}.brand-flower circle{fill:#ecd2aa}.brand-flower-one{animation:brand-bloom 4s 4s ease-out both}.brand-flower-two{animation:brand-bloom 4s 6s ease-out both}
+@keyframes brand-grow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}@keyframes brand-bloom{from{transform:scale(0)}to{transform:scale(1)}}
+nav.container-fluid ul:nth-child(2) a::before,.frame::before,.frame::after{animation:star-glimmer 9s ease-in-out infinite}
+nav.container-fluid ul:nth-child(2) li:nth-child(2) a::before{animation-delay:-2.5s}nav.container-fluid ul:nth-child(2) li:nth-child(3) a::before{animation-delay:-5s}nav.container-fluid ul:nth-child(2) li:nth-child(4) a::before{animation-delay:-7s}.frame::after{animation-delay:-4.5s}
+@keyframes star-glimmer{0%,65%,100%{opacity:.7;text-shadow:0 0 2px #ff6cb340}35%{opacity:1;text-shadow:0 0 6px #ffc0dfaa,0 0 12px #ff6cb366}}
+@media(max-width:680px){.brand-vines{inset:-5px -7px;width:calc(100% + 14px);height:calc(100% + 10px)}}
+@media(prefers-reduced-motion:reduce){.brand-stem{stroke-dashoffset:0}.brand-leaves{opacity:.85}.brand-flower{transform:none}}
 </style>
 </head>
 <body>
   <a class="skip-link" href="#top">Перейти к содержимому</a>
   <nav class="container-fluid" aria-label="Основная навигация">
-    <ul><li><a class="brand-link" href="#top" aria-label="TVILTOFER — наверх"><strong>TVILTOFER</strong></a></li></ul>
+    <ul><li><a class="brand-link" href="#top" aria-label="TVILTOFER — наверх"><strong>TVILTOFER</strong><svg class="brand-vines" viewBox="0 0 220 70" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="brand-stem" pathLength="100" d="M19 61C-2 55 15 36 17 29S9 9 28 7C55 4 62 15 78 7S105 8 115 5M202 60C220 50 204 40 204 28S214 6 191 7C170 12 160 1 146 8S127 3 115 5"/><path class="brand-leaves" d="M17 35Q3 26 10 20Q20 24 17 35ZM42 8Q31-3 26 2Q28 12 42 8ZM174 9Q187-3 190 3Q186 14 174 9ZM205 42Q220 32 213 27Q202 30 205 42Z"/><g class="brand-flower brand-flower-one" style="transform-origin:52px 8px"><path d="M52 8C43 4 46-4 52 2C57-4 63 4 52 8C61 12 57 18 52 11C46 18 42 12 52 8Z"/><circle cx="52" cy="8" r="2"/></g><g class="brand-flower brand-flower-two" style="transform-origin:204px 47px"><path d="M204 47C195 43 198 35 204 41C209 35 215 43 204 47C213 51 209 57 204 50C198 57 194 51 204 47Z"/><circle cx="204" cy="47" r="2"/></g></svg></a></li></ul>
     <ul><li><a href="#about">Обо мне</a></li><li><a href="#gallery">Арты</a></li><li><a href="#links">Аккаунты</a></li><li><a href="https://www.twitch.tv/tviltofer" target="_blank" rel="noopener" class="twitch-nav">Twitch ↗<span class="visually-hidden"> (откроется в новой вкладке)</span></a></li></ul>
   </nav>
 
