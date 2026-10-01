@@ -92,12 +92,12 @@ main:focus{outline:none}
 /* Let the supplied font retain its natural weight in section titles. */
 .section-head h2{font-weight:400;font-synthesis:none}
 /* A slow, single botanical reveal around the unchanged brand silhouette. */
-nav .brand-link{position:relative;overflow:visible}.brand-vines{position:absolute;inset:-7px -9px;width:calc(100% + 18px);height:calc(100% + 14px);pointer-events:none;overflow:visible}
-.brand-stem{fill:none;stroke:#b087bd;stroke-width:1.2;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:100;animation:brand-grow 7s ease-out both}.brand-leaves{fill:#77547d;stroke:#bb94c4;stroke-width:.6;animation:leaf-reveal 3s 2s ease-out both}
-.brand-flower path{fill:#cd9bbb;stroke:#f3c7df;stroke-width:.6}.brand-flower circle{fill:#ecd2aa}.brand-flower-one{animation:brand-bloom 4s 4s ease-out both}.brand-flower-two{animation:brand-bloom 4s 6s ease-out both}
+nav .brand-link{position:relative;overflow:visible}svg.brand-vines{position:absolute;inset:-7px -9px;width:calc(100% + 18px);height:calc(100% + 14px);pointer-events:none;overflow:visible}
+.brand-stem{fill:none;stroke:#71856b;stroke-width:1.45;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:100;animation:brand-grow 7s ease-out both}.brand-stem-light{stroke:#c1c7a0;stroke-width:.4;opacity:.6}.brand-leaves{animation:leaf-reveal 3s 2s ease-out both}
+.brand-flower{transform-origin:0 0;filter:drop-shadow(0 1px 1px #100914aa)}.brand-flower-bud{animation:brand-bloom 4s 5s ease-out both}.brand-flower-one{animation:brand-bloom 4s 4s ease-out both}.brand-flower-two{animation:brand-bloom 4s 6s ease-out both}
 @keyframes brand-grow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}@keyframes brand-bloom{from{transform:scale(0)}to{transform:scale(1)}}
 nav.container-fluid ul:nth-child(2) a::before,.frame::before,.frame::after{animation:star-glimmer 9s ease-in-out infinite}
 nav.container-fluid ul:nth-child(2) li:nth-child(2) a::before{animation-delay:-2.5s}nav.container-fluid ul:nth-child(2) li:nth-child(3) a::before{animation-delay:-5s}nav.container-fluid ul:nth-child(2) li:nth-child(4) a::before{animation-delay:-7s}.frame::after{animation-delay:-4.5s}
 @keyframes star-glimmer{0%,65%,100%{opacity:.7;text-shadow:0 0 2px #ff6cb340}35%{opacity:1;text-shadow:0 0 6px #ffc0dfaa,0 0 12px #ff6cb366}}
-@media(max-width:680px){.brand-vines{inset:-5px -7px;width:calc(100% + 14px);height:calc(100% + 10px)}}
+@media(max-width:680px){svg.brand-vines{inset:-5px -7px;width:calc(100% + 14px);height:calc(100% + 10px)}}
 @media(prefers-reduced-motion:reduce){.brand-stem{stroke-dashoffset:0}.brand-leaves{opacity:.85}.brand-flower{transform:none}}
